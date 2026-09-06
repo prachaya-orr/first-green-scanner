@@ -1,0 +1,33 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# ── Virtual environment (image สร้างใหม่เองใน build) ─────
+.venv/
+venv/
+
+# ── Build artifacts ─────────────────────────────────────
+build/
+dist/
+
+# ── Git / IDE / OS ──────────────────────────────────────
+.git/
+.gitignore
+.vscode/
+.idea/
+.DS_Store
+
+# ── Docker เอง ──────────────────────────────────────────
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# ── เอกสาร / สคริปต์ที่ไม่จำเป็นตอน runtime ──────────────
+README.md
+run.sh
+
+# ── Streamlit secrets ───────────────────────────────────
+.streamlit/secrets.toml

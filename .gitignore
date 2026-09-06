@@ -1,0 +1,22 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# ── Virtual environment (uv สร้างเอง ไม่ต้อง commit) ──────
+.venv/
+venv/
+
+# ── Build artifacts ─────────────────────────────────────
+build/
+dist/
+
+# ── IDE / OS ────────────────────────────────────────────
+.vscode/
+.idea/
+.DS_Store
+
+# ── Streamlit ───────────────────────────────────────────
+.streamlit/secrets.toml
