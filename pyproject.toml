@@ -1,0 +1,56 @@
+[project]
+name = "first-green-scanner"
+version = "0.1.0"
+description = "สแกนหาเขียวแท่งแรก + Volume ผิดปกติ (SET / HK / US)"
+requires-python = ">=3.10"
+dependencies = [
+    "streamlit>=1.35.0",
+    "yfinance>=0.2.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "plotly>=5.0.0",
+]
+
+# dev dependencies (เทียบเท่า devDependencies ใน package.json)
+# ใช้ [dependency-groups] มาตรฐาน PEP 735 ที่ uv รองรับเต็มรูปแบบ
+[dependency-groups]
+dev = [
+    "ruff>=0.4.0",
+    "taskipy>=1.12.0",
+]
+
+# ── build system (เทียบเท่า main/type ใน package.json) ──────────────────────
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scanner"]
+
+# ── script runner (เทียบเท่า "scripts" ใน package.json) ─────────────────────
+# รันด้วย:  uv run task <ชื่อ>   เช่น  uv run task dev
+[tool.taskipy.tasks]
+dev = "streamlit run app.py"
+start = "streamlit run app.py --server.headless true"
+lint = "ruff check ."
+format = "ruff format ."
+fix = "ruff check --fix ."
+check = "ruff check . && ruff format --check ."
+
+# ── uv settings ────────────────────────────────────────────────────────────
+[tool.uv]
+# ให้ uv จัดการ package นี้แบบ editable ใน environment เอง
+package = true
+
+# ── ruff (linter + formatter — แทน black ในตัวเดียว) ────────────────────────
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint]
+# E/F = pyflakes+pycodestyle, I = isort, UP = pyupgrade, B = bugbear
+select = ["E", "F", "I", "UP", "B"]
+ignore = [
+    "E501",  # ปล่อยให้ formatter จัดการความยาวบรรทัด
+]
